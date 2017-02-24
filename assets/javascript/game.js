@@ -58,19 +58,43 @@ function checkLetters (letter) {
 		if (selectedWord[i] == letter){
 			blanksAndSuccesses[i] = letter;
 		}
+
 		// letter wasn't found
 	else {
 		wrongLetters.push(letter);
-		guessesLeft --;
-	}
-	console.log(blanksAndSuccesses)
+		guessesLeft--;
+		console.log(blanksAndSuccesses)
+}
 }
 
 
 }
 function roundComplete(){
 	console.log("Win Count: " + winCount + " | Loss Count: " + lossCount + " | Guesses Left: " + guessesLeft)
+	document.getElementById("guessesLeft").innerHTML = numGuesses;
+	document.getElementById("wordToGuess").innerHTML = blanksAndSuccesses.toString;
+	document.getElementById("wrongGuesses").innerHTML = wrongLetters.join (" ")
 }
+
+// Check if user won
+if (lettersinWord.toString() == blanksAndSuccesses.toString()){
+	winCounter++;
+	alert("Win!");
+
+// Update counter in HTML
+	document.getElementById("winCounter").innerHTML = winCount
+	startGame();
+}
+else if (guessesLeft=0){
+	lossCount++;
+	alert("lost!");
+
+// Update HTML
+	document.getElementById("lossCounter").innerHTML = lossCount;
+
+}
+// Check if user lost
+
 
 // Main Process
 // ==========================================================
